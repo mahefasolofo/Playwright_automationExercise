@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test'
 
 /**
  * Read environment variables from file.
@@ -39,10 +39,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
     {
       name: 'webkit',
@@ -52,25 +52,23 @@ export default defineConfig({
       name: 'all-browsers-and-tests',
       use: {
         baseURL: 'https://playwright.dev/',
-        ...devices['Desktop Chrome']
-      }
+        ...devices['Desktop Chrome'],
+      },
     },
     {
       name: 'all-browsers-and-tests',
       use: {
         baseURL: 'https://playwright.dev/',
-        ...devices['Desktop Safari']
-      }
-      
+        ...devices['Desktop Safari'],
+      },
     },
     {
       name: 'all-browsers-and-tests',
       use: {
         baseURL: 'https://playwright.dev/',
-        ...devices['Desktop Firefox']
-      }
-    }
-
+        ...devices['Desktop Firefox'],
+      },
+    },
 
     /* Test against mobile viewports. */
     // {
@@ -99,4 +97,4 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-});
+})

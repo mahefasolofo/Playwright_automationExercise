@@ -2,20 +2,27 @@ import { test, expect } from '@playwright/test'
 
 const URL = 'https://automationexercise.com/'
 
-test('has title', async ({ page }) => {
-  await page.goto(URL)
+test.describe('Automation Exercise Tests', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(URL)
+  })
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Automation Exercise/)
-  expect(page.url()).toBe('https://automationexercise.com/');
-})
+  test('has title', async ({ page }) => {
+    // Expect a title "to contain" a substring.
+    await expect(page).toHaveTitle(/Automation Exercise/)
+    expect(page.url()).toBe(URL)
 
-test('get started link', async ({ page }) => {
-  await page.goto(URL)
+    const isVisible = await page.$eval('#ad_position_box', (element) => {
+      return (
+        window.getComputedStyle(element).getPropertyValue('display') !== 'none'
+      )
+    })
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click()
-
-  // Expects the URL to contain intro.
-  await expect(page).toHaveURL(/.*intro/)
+    if (isVisible) {
+      // Masquez l'élément en utilisant JavaScript
+      await page.$eval('#ad_position_box', (element) => {
+        element.style.display = 'none'
+      })
+    }
+  })
 })
