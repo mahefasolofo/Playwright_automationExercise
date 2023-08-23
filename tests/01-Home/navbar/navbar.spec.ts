@@ -7,8 +7,8 @@ test.describe('Navigation on navbar', () => {
     page,
   }) => {
     await page.goto(URL)
-    // await page.getByRole('button', {name: 'Close'}).click()
     await page.getByRole('link', { name: ' Products' }).click()
+
     await expect(page).toHaveTitle(/Automation Exercise - All Products/)
     await expect(page).toHaveURL(/.products/)
   })
@@ -18,6 +18,7 @@ test.describe('Navigation on navbar', () => {
   }) => {
     await page.goto(URL)
     await page.getByRole('link', { name: ' Cart' }).click()
+
     await expect(page).toHaveTitle(/Automation Exercise - Checkout/)
     await expect(page).toHaveURL(/.view_cart/)
   })
@@ -27,7 +28,7 @@ test.describe('Navigation on navbar', () => {
   }) => {
     await page.goto(URL)
     await page.getByRole('link', { name: ' Signup / Login' }).click()
-    // await expect(page).toHaveTitle(/Automation Exercise - Signup / Login/)
+    await expect(page).toHaveTitle(/Automation Exercise - Signup \/ Login/)
     await expect(page).toHaveURL(/.login/)
   })
 
@@ -43,6 +44,7 @@ test.describe('Navigation on navbar', () => {
   test('S09: Navigation to API Testing page', async ({ page }) => {
     await page.goto(URL)
     await page.getByRole('link', { name: ' API Testing' }).click()
+
     await expect(page).toHaveTitle(/Automation Practice for API Testing/)
     await expect(page).toHaveURL(/.api_list/)
   })
@@ -50,6 +52,7 @@ test.describe('Navigation on navbar', () => {
   test('S11: Navigate to Contact Us page', async ({ page }) => {
     await page.goto(URL)
     await page.getByRole('link', { name: ' Contact us' }).click()
+
     await expect(page).toHaveTitle(/Automation Exercise - Contact Us/)
     await expect(page).toHaveURL(/.contact_us/)
   })
@@ -57,6 +60,7 @@ test.describe('Navigation on navbar', () => {
   test('S12: : Go to Home page', async ({ page }) => {
     await page.goto(URL)
     await page.getByRole('link', { name: ' Home' }).click()
+
     await expect(page).toHaveTitle(/Automation Exercise/)
   })
 })

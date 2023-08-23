@@ -11,7 +11,8 @@ test.describe('Automation Exercise Tests', () => {
     // Expect a title "to contain" a substring.
     await expect(page).toHaveTitle(/Automation Exercise/)
     expect(page.url()).toBe(URL)
-
+    await page.getByRole('link', { name: ' Products' }).click()
+    
     const isVisible = await page.$eval('#ad_position_box', (element) => {
       return (
         window.getComputedStyle(element).getPropertyValue('display') !== 'none'
@@ -24,5 +25,8 @@ test.describe('Automation Exercise Tests', () => {
         element.style.display = 'none'
       })
     }
+
+    await expect(page).toHaveTitle(/Automation Exercise - All Products/)
+    await expect(page).toHaveURL(/.products/)
   })
 })
