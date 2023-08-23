@@ -8,9 +8,10 @@ test.describe('Carousel motion test', () => {
     page,
   }) => {
     await page.goto(URL)
-    const carouselItem = await page.locator('.carousel-inner .item').nth(0)
+    const carouselItem1 = await page.locator('.carousel-inner .item').nth(0)
+    const carouselItem2 = await page.locator('.carousel-inner .item').nth(1)
     await page.waitForTimeout(5000)
-    const hasActiveClass = await carouselItem.locator('active')
-    // await expect(hasActiveClass).toBeFalsy()
+    await expect(carouselItem1).not.toHaveClass('item active')
+    await expect(carouselItem2).toHaveClass('item active')
   })
 })
