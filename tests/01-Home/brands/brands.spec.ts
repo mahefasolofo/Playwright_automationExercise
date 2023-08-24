@@ -32,7 +32,7 @@ test.describe('The number in brackets to the right of each brand name must be id
       // Comparaison du nombre obtenu avec la valeur extraite précédemment
       expect(count.toString()).toBe(number)
     } else {
-      console.log("L'élément n'a pas été trouvé.")
+      console.error("L'élément n'a pas été trouvé.")
     }
   })
 })
